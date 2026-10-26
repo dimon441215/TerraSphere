@@ -445,18 +445,135 @@
         padding: 1rem 1.2rem;
         background: var(--bg);
       }
+      .bg {
+        display: none;
+        margin-left: auto;
+        background: none;
+        border: 1.5px solid rgba(241, 239, 231, 0.4);
+        color: #f1efe7;
+        border-radius: 3px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .mb {
+        display: none;
+      }
       @media (max-width: 820px) {
+        body {
+          font-size: 16px;
+          padding-bottom: 76px;
+        }
         .hero .w,
         .two {
           grid-template-columns: 1fr;
         }
+        .hero .w {
+          padding-block: 2rem 2.4rem;
+          gap: 1.5rem;
+        }
         .hero svg {
-          max-width: 460px;
+          max-width: 420px;
+          margin-inline: auto;
+        }
+        .hero p {
+          font-size: 1.05rem;
+        }
+        section {
+          padding-block: 2.6rem;
+        }
+        .two {
+          gap: 1.8rem;
+        }
+        header .w {
+          min-height: 58px;
+        }
+        .bg {
+          display: block;
+        }
+        .tel {
+          display: none;
         }
         nav {
-          margin-left: 0;
+          display: none;
+          order: 3;
           width: 100%;
-          font-size: 0.88rem;
+          flex-direction: column;
+          gap: 0;
+          margin: 0 0 0.6rem;
+          font-size: 1.05rem;
+        }
+        nav.open {
+          display: flex;
+        }
+        nav a {
+          padding: 0.9rem 0;
+          border-bottom: 1px solid rgba(241, 239, 231, 0.12);
+        }
+        .hero .acts {
+          flex-direction: column;
+          gap: 0.6rem;
+        }
+        .hero .acts .btn,
+        .cta .btn {
+          display: block;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 0.6rem;
+        }
+        .btn {
+          padding: 0.95rem 1.2rem;
+        }
+        .grid,
+        .opts {
+          grid-template-columns: 1fr;
+        }
+        .card {
+          padding: 1.3rem;
+        }
+        .q {
+          padding: 1.2rem;
+        }
+        .big {
+          font-size: 2.4rem;
+        }
+        .opt {
+          padding: 1rem;
+        }
+        .steps {
+          grid-template-columns: 1fr 1fr;
+          gap: 1.2rem;
+        }
+        .mb {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.6rem;
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 25;
+          padding: 0.6rem 0.8rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+          background: var(--dk);
+          border-top: 1px solid rgba(241, 239, 231, 0.15);
+        }
+        .mb .btn {
+          text-align: center;
+          padding: 0.8rem 0.5rem;
+          margin: 0;
+        }
+        .mb .btn.o {
+          color: #f1efe7;
+        }
+      }
+      @media (max-width: 420px) {
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        h1 {
+          font-size: 2.3rem;
         }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -467,6 +584,141 @@
           scroll-behavior: auto;
         }
       }
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes pg {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes dn {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      #app > * {
+        animation: pg 0.45s ease backwards;
+      }
+      .hero .crumbs,
+      .hero h1,
+      .hero p,
+      .hero .acts {
+        animation: up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+      }
+      .hero .crumbs {
+        animation-delay: 0.05s;
+      }
+      .hero h1 {
+        animation-delay: 0.12s;
+      }
+      .hero p {
+        animation-delay: 0.24s;
+      }
+      .hero .acts {
+        animation-delay: 0.36s;
+      }
+      .hero svg {
+        animation: pg 1.3s ease 0.2s backwards;
+      }
+      .rv {
+        opacity: 0;
+      }
+      .rv.in {
+        opacity: 1;
+        animation: up 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+        animation-delay: var(--d, 0s);
+      }
+      #quiz .q {
+        animation: up 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+      }
+      .btn {
+        transition:
+          transform 0.2s ease,
+          filter 0.2s ease,
+          box-shadow 0.2s ease,
+          background-color 0.2s,
+          color 0.2s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px -12px rgba(0, 0, 0, 0.5);
+      }
+      .btn:active {
+        transform: none;
+        box-shadow: none;
+      }
+      .card {
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 18px 32px -18px rgba(0, 0, 0, 0.45);
+      }
+      .opt {
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          background-color 0.2s;
+      }
+      .opt:hover {
+        border-color: var(--br);
+      }
+      nav a {
+        transition:
+          opacity 0.2s,
+          border-color 0.2s;
+      }
+      .bg {
+        transition: background-color 0.2s;
+      }
+      .bg:hover {
+        background: rgba(241, 239, 231, 0.1);
+      }
+      nav.open {
+        animation: dn 0.25s ease;
+      }
+      .steps li {
+        transition: border-color 0.3s;
+      }
+      .steps li:hover {
+        border-color: var(--tx);
+      }
+      .feat li {
+        transition: padding-left 0.25s ease;
+      }
+      .feat li:hover {
+        padding-left: 0.6rem;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+        .rv {
+          opacity: 1;
+        }
+      }
     </style>
   </head>
   <body>
@@ -475,18 +727,31 @@
         <a class="logo" href="#home">TerraSphere</a>
         <nav id="nav"></nav>
         <a class="tel" id="hTel" href="#"></a>
+        <button
+          class="bg"
+          id="bg"
+          type="button"
+          aria-label="Меню"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
       </div>
     </header>
     <main id="app"></main>
     <footer><div class="w" id="foot"></div></footer>
+    <div class="mb">
+      <a class="btn o" id="mTel" href="#">Позвонить</a
+      ><a class="btn" href="#raschet">Рассчитать цену</a>
+    </div>
 
     <script>
-      
+      /* ====== ЗДЕСЬ МЕНЯЕТЕ ДАННЫЕ КОМПАНИИ ====== */
       const CFG = {
-        phone: "+7 (999) 999-99-99", // телефон
-        tg: "monk", // Telegram без @
-        wa: "79999999999", // WhatsApp, цифры без +
-        email: "support@gmail.com",
+        phone: "+7 (000) 000-00-00", // телефон
+        tg: "terrasphere_manager", // Telegram без @
+        wa: "70000000000", // WhatsApp, цифры без +
+        email: "info@terrasphere.ru",
         hours: "ежедневно 9:00–20:00",
       };
       /* ====== ПРОДУКТЫ, ЦЕНЫ И КОМПЛЕКТЫ (цены примерные — замените на свои) ====== */
@@ -893,6 +1158,31 @@
         box.innerHTML = `<h3>Заявка готова</h3><p>Нажмите кнопку, чтобы отправить её менеджеру в Telegram. Или просто позвоните: <a href="tel:${tel}">${CFG.phone}</a>.</p><a class="btn" href="https://t.me/${CFG.tg}?text=${encodeURIComponent(text)}">Отправить в Telegram</a>`;
       }
 
+      function reveal() {
+        const els = document.querySelectorAll(
+          "#app h2,#app .card,#app .steps li,#app .feat li,#app form.q,#app .ok",
+        );
+        if (!("IntersectionObserver" in window)) {
+          els.forEach((e) => e.classList.add("rv", "in"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (es) =>
+            es.forEach((x) => {
+              if (x.isIntersecting) {
+                x.target.classList.add("in");
+                io.unobserve(x.target);
+              }
+            }),
+          { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+        );
+        els.forEach((e) => {
+          const i = [...e.parentElement.children].indexOf(e);
+          e.style.setProperty("--d", Math.min(i, 5) * 0.08 + "s");
+          e.classList.add("rv");
+          io.observe(e);
+        });
+      }
       function render() {
         let h = (location.hash || "#home").slice(1);
         if (!pages[h]) h = "home";
@@ -930,7 +1220,11 @@
             Q.step = 0;
           }),
         );
+        reveal();
         window.scrollTo(0, 0);
+        $("#nav").classList.remove("open");
+        $("#bg").setAttribute("aria-expanded", "false");
+        $("#bg").textContent = "☰";
       }
       $("#nav").innerHTML = [
         ["terrasy", "Террасы"],
@@ -946,8 +1240,14 @@
       const ht = $("#hTel");
       ht.href = "tel:" + tel;
       ht.textContent = CFG.phone;
+      $("#mTel").href = "tel:" + tel;
+      $("#bg").onclick = () => {
+        const o = $("#nav").classList.toggle("open");
+        $("#bg").setAttribute("aria-expanded", o);
+        $("#bg").textContent = o ? "✕" : "☰";
+      };
       $("#foot").innerHTML =
-        `<div><b>TerraSphere</b>Террасы, навесы, мангальные зоны и беседки в Воронеже и Липецке.</div><div><b>Связаться</b><a href="tel:${tel}">${CFG.phone}</a><br><a href="https://t.me/${CFG.tg}">Telegram</a> · <a href="https://wa.me/${CFG.wa}">WhatsApp</a><br>${CFG.email}</div>${CFG.hours}</div>`;
+        `<div><b>TerraSphere</b>Террасы, навесы, мангальные зоны и беседки в Воронеже и Липецке.</div><div><b>Связаться</b><a href="tel:${tel}">${CFG.phone}</a><br><a href="https://t.me/${CFG.tg}">Telegram</a> · <a href="https://wa.me/${CFG.wa}">WhatsApp</a><br>${CFG.email}</div><div><b>Время работы</b>${CFG.hours}</div>`;
       addEventListener("hashchange", render);
       render();
     </script>
